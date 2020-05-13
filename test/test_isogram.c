@@ -76,7 +76,7 @@ void test_upper_case_strings(){
 
 void test_lower_case_strings(){
     //positive tests
-    TEST_ASSERT_TRUE(is_isogram("dialogschwerpunkte"));
+    TEST_ASSERT_TRUE(is_isogram("dialogschwerpunkt"));
 
     //negative tests
     TEST_ASSERT_FALSE(is_isogram("dialogschwerpunkte"));
@@ -95,9 +95,12 @@ void test_mixed_case_strings(){
 void test_special_characters_strings(){
     //positive tests
     TEST_ASSERT_TRUE(is_isogram("!?%"));
-
+    TEST_ASSERT_TRUE(is_isogram("!??$"));
+    TEST_ASSERT_TRUE(is_isogram("abc??"));
+    
     //negative tests
-    TEST_ASSERT_FALSE(is_isogram("!??$"));
+    TEST_ASSERT_FALSE(is_isogram("!??$a$$ab"));
+    
 }
 
 void test_digit_strings(){

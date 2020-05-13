@@ -11,15 +11,30 @@
     return true
 */
 
+//ignore everything but characters (a-z, A-Z) and digits(0-9)
+bool isIgnored(char c) {
+
+    bool isLowerChar = (c >= 'a' && c <= 'z');
+    bool isUpperChar = (c >= 'A' && c <= 'Z');
+    bool isDigit = (c >= '0' && c <= '9');
+
+    return !(isLowerChar || isUpperChar || isDigit);
+}
+
+char toLowerCase(char c){
+    if(c >= 'A' && c <= 'Z'){
+        return c - ('A' - 'a');
+    }
+    return c;
+}
+
 bool is_isogram(const char phrase[]){
     uint16_t i = 0;
     uint16_t count[255] = {0};
 
     while(phrase[i] != '\0'){
-        if(phrase[i] >= 'A' && phrase[i] <= 'Z'){
-            count[(phrase[i] + ('a'-'A'))] +=1;     //ignore capitalization 
-        }
-        else if (phrase[i] == ' ') {    //ignore blankspace
+        toLowerCase(phrase[i]);
+        if (phrase[i] == ' ') {    //ignore blankspace
         //do nothing
         }else {
             count[phrase[i]]++;         //count number of times character appears in string
